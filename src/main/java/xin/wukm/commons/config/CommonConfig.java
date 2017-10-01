@@ -13,13 +13,18 @@ package xin.wukm.commons.config;
 import com.alibaba.fastjson.JSONObject;
 import com.jfinal.config.*;
 import com.jfinal.core.ActionReporter;
+import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
+import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.VelocityRender;
 import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
 import org.apache.log4j.Logger;
 import org.apache.velocity.app.VelocityEngine;
+import xin.wukm.commons.interceptor.FooterInterceptor;
+import xin.wukm.commons.interceptor.LoginInterceptor;
 import xin.wukm.commons.routes.CommonApiRoutes;
 import xin.wukm.commons.routes.CommonRoutes;
+import xin.wukm.commons.table.Tables;
 import xin.wukm.commons.util.Commons;
 import xin.wukm.commons.writer.LoggerWriter;
 
@@ -77,8 +82,14 @@ public class CommonConfig extends JFinalConfig {
 
     @Override
     public void configRoute(Routes me) {
-        me.add(new CommonRoutes());
-        me.add(new CommonApiRoutes());
+        FooterInterceptor footerInterceptor = new FooterInterceptor();
+        CommonRoutes commonRoutes = new CommonRoutes();
+        commonRoutes.addInterceptor(footerInterceptor);
+        me.add(commonRoutes);
+        CommonApiRoutes commonApiRoutes = new CommonApiRoutes();
+        LoginInterceptor loginInterceptor = new LoginInterceptor();
+        commonApiRoutes.addInterceptor(loginInterceptor);
+        me.add(commonApiRoutes);
     }
 
     @Override
@@ -88,16 +99,33 @@ public class CommonConfig extends JFinalConfig {
 
     @Override
     public void configPlugin(Plugins me) {
-
+        initDatabase(me);
     }
 
     @Override
     public void configInterceptor(Interceptors me) {
-
+        me.add(new LoginInterceptor());
     }
 
     @Override
     public void configHandler(Handlers me) {
 
+    }
+
+    private void initDatabase(Plugins me){
+        String host = "172.30.163.138";
+        String port = "3306";
+        String database = "commons";
+        String userName = "commons";
+        String password = "commons";
+        StringBuilder url = new StringBuilder("jdbc:mysql://");
+        url.append(host).append(":").append(port).append("/").append(database).append("?useUnicode=true&characterEncoding=UTF-8");
+        logger.info("init database:" + url.toString());
+        DruidPlugin druidPlugin = new DruidPlugin(url.toString(),userName,password);
+        me.add(druidPlugin);
+
+        ActiveRecordPlugin activeRecordPlugin = new ActiveRecordPlugin(druidPlugin);
+        new Tables().register(activeRecordPlugin);
+        me.add(activeRecordPlugin);
     }
 }

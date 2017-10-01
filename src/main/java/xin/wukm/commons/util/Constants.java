@@ -26,4 +26,12 @@ public class Constants {
     //日期格式化
     public static final String DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
 
+    //用户通用的cookie key
+    public static final String USER_COOKIE_KEY = "MANGER-USER-KEY";
+
+    //cookie超时时间
+    public static final Integer COOKIE_TIMEOUT = 24 * 60 * 60;
+
+    //COOKIE SEPARATOR
+    public static final String COOKIE_SEPARATOR = ":";
 }

@@ -12,9 +12,12 @@ package xin.wukm.commons.util;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.SystemUtils;
+import org.apache.commons.lang.time.DateFormatUtils;
 
 import java.text.DecimalFormat;
+import java.util.Calendar;
 
 /**
  * 代码有编辑器 IntelliJ IDEA 完成
@@ -39,7 +42,14 @@ public class Commons {
 
     public static String formatNumber(Number number){
         DecimalFormat format = new DecimalFormat("#.0");
-
         return format.format(number);
+    }
+
+    public static String md5Hex(String source){
+        return DigestUtils.md5Hex(source);
+    }
+
+    public static String formatNow(){
+        return DateFormatUtils.format(Calendar.getInstance(),Constants.DATE_PATTERN);
     }
 }
