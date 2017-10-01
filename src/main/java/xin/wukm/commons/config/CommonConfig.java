@@ -113,7 +113,7 @@ public class CommonConfig extends JFinalConfig {
     }
 
     private void initDatabase(Plugins me){
-        String host = "172.30.20.109";
+        String host = "172.30.24.57";
         String port = "3306";
         String database = "commons";
         String userName = "commons";
