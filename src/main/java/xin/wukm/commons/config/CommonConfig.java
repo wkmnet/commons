@@ -21,6 +21,7 @@ import com.jfinal.template.Engine;
 import org.apache.log4j.Logger;
 import org.apache.velocity.app.VelocityEngine;
 import xin.wukm.commons.interceptor.FooterInterceptor;
+import xin.wukm.commons.interceptor.LogInterceptor;
 import xin.wukm.commons.interceptor.LoginInterceptor;
 import xin.wukm.commons.routes.CommonApiRoutes;
 import xin.wukm.commons.routes.CommonRoutes;
@@ -104,7 +105,7 @@ public class CommonConfig extends JFinalConfig {
 
     @Override
     public void configInterceptor(Interceptors me) {
-        me.add(new LoginInterceptor());
+        me.add(new LogInterceptor());
     }
 
     @Override
