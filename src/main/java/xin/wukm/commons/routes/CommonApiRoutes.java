@@ -12,6 +12,7 @@ package xin.wukm.commons.routes;
 
 import com.jfinal.config.Routes;
 import xin.wukm.commons.controller.ServerController;
+import xin.wukm.commons.controller.UserController;
 
 /**
  * 代码有编辑器 IntelliJ IDEA 完成
@@ -28,5 +29,6 @@ public class CommonApiRoutes extends Routes {
     @Override
     public void config() {
         add("/api/monitor", ServerController.class);
+        add("/api/user", UserController.class);
     }
 }

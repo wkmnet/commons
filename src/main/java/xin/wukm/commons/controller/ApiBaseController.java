@@ -10,12 +10,12 @@
  */
 package xin.wukm.commons.controller;
 
+import com.google.common.collect.Maps;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.HttpKit;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -38,7 +38,7 @@ public abstract class ApiBaseController extends Controller {
     }
 
     public Map<String,Object> ok(Object data){
-        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> result = Maps.newHashMap();
         result.put("success", true);
         result.put("code", "success");
         result.put("message", "成功");
@@ -55,7 +55,7 @@ public abstract class ApiBaseController extends Controller {
     }
 
     public Map<String,Object> fail(String code, String message, Object data){
-        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> result = Maps.newHashMap();
         result.put("success", false);
         result.put("code", code);
         result.put("message", message);
