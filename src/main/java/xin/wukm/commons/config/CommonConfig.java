@@ -113,13 +113,13 @@ public class CommonConfig extends JFinalConfig {
     }
 
     private void initDatabase(Plugins me){
-//        String host = "172.30.163.138";
+        String host = "172.30.20.109";
         String port = "3306";
         String database = "commons";
         String userName = "commons";
         String password = "commons";
         StringBuilder url = new StringBuilder("jdbc:mysql://");
-        url.append("mysql").append(":").append(port).append("/").append(database).append("?useUnicode=true&characterEncoding=UTF-8");
+        url.append(host).append(":").append(port).append("/").append(database).append("?useUnicode=true&characterEncoding=UTF-8");
         logger.info("init database:" + url.toString());
         DruidPlugin druidPlugin = new DruidPlugin(url.toString(),userName,password);
         me.add(druidPlugin);
