@@ -55,7 +55,7 @@ public class IndexController extends ViewController {
             return;
         }
         String current = Commons.formatNow();
-        new AdminUser().set("id",user.getStr("id")).set("login_time",current).update();
+        new AdminUser().set("id",user.getLong("id")).set("login_time",current).update();
         setCookie(Constants.USER_COOKIE_KEY,
                 user.getLong("id").toString().concat(Constants.COOKIE_SEPARATOR).concat(Commons.md5Hex(email.concat(current))),
                 Constants.COOKIE_TIMEOUT);
