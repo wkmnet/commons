@@ -11,6 +11,7 @@
 package xin.wukm.commons.routes;
 
 import com.jfinal.config.Routes;
+import xin.wukm.commons.controller.AccessUserController;
 import xin.wukm.commons.controller.ServerController;
 import xin.wukm.commons.controller.UserController;
 
@@ -29,6 +30,7 @@ public class CommonApiRoutes extends Routes {
     @Override
     public void config() {
         add("/api/monitor", ServerController.class);
+        add("/api/access", AccessUserController.class);
         add("/api/user", UserController.class);
     }
 }
