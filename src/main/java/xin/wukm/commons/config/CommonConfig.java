@@ -20,6 +20,7 @@ import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
 import org.apache.log4j.Logger;
 import org.apache.velocity.app.VelocityEngine;
+import xin.wukm.commons.interceptor.ExceptionInterceptor;
 import xin.wukm.commons.interceptor.FooterInterceptor;
 import xin.wukm.commons.interceptor.LogInterceptor;
 import xin.wukm.commons.interceptor.LoginInterceptor;
@@ -106,6 +107,7 @@ public class CommonConfig extends JFinalConfig {
     @Override
     public void configInterceptor(Interceptors me) {
         me.add(new LogInterceptor());
+        me.add(new ExceptionInterceptor());
     }
 
     @Override
