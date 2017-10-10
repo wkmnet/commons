@@ -10,6 +10,8 @@
  */
 package xin.wukm.commons.service;
 
+import org.apache.log4j.Logger;
+
 /**
  * Create with IntelliJ IDEA
  * Project name : commons
@@ -22,4 +24,8 @@ package xin.wukm.commons.service;
  * To change this template use File | Settings | File and Code Templates.
  */
 public abstract class BaseService {
+
+    //日志
+    protected Logger logger = Logger.getLogger(this.getClass());
+
 }
