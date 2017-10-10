@@ -18,4 +18,14 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
+  <!--<error-page>
+    <error-code>404</error-code>
+    <location>/api/error/404</location>
+  </error-page>-->
+  
+  <error-page>
+    <exception-type>java.lang.Exception</exception-type>
+    <location>/system/error</location>
+  </error-page>
+  
 </web-app>
