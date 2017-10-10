@@ -34,4 +34,7 @@ public class Constants {
 
     //COOKIE SEPARATOR
     public static final String COOKIE_SEPARATOR = ":";
+
+    //扫描标致
+    public static volatile boolean SCAN_FLAG = false;
 }
