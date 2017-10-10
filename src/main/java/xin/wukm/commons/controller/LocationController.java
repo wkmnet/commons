@@ -70,7 +70,8 @@ public class LocationController extends ApiBaseController {
         logger.info("index:" + index);
         String address = getPara("ip");
         if(StringUtils.isBlank(address)){
-            address = getRequest().getRemoteAddr();
+            String forwarded = getHeader("x-forwarded-for");
+            address = StringUtils.isBlank(forwarded)? getRequest().getRemoteAddr() : forwarded;
         }
         logger.info("address:" + address);
         String p = "^([0-9]{1,3})\\.([0-9]{1,3})\\.([0-9]{1,3})\\.([0-9]{1,3})$";
