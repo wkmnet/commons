@@ -116,8 +116,9 @@ public class CommonConfig extends JFinalConfig {
     }
 
     private void initDatabase(Plugins me){
-        String host = "172.31.18.142";
-        String port = "3306";
+
+        String host = System.getenv("MYSQL_SERVICE_HOST");
+        String port = System.getenv("MYSQL_SERVICE_PORT");
         String database = "commons";
         String userName = "commons";
         String password = "commons";
