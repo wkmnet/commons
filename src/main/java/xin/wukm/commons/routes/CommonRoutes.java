@@ -14,6 +14,7 @@ package xin.wukm.commons.routes;
 import com.jfinal.config.Routes;
 import xin.wukm.commons.controller.ErrorController;
 import xin.wukm.commons.controller.IndexController;
+import xin.wukm.commons.controller.LogUploadController;
 
 /**
  * 代码有编辑器 IntelliJ IDEA 完成
@@ -31,5 +32,6 @@ public class CommonRoutes extends Routes {
     public void config() {
         add("/", IndexController.class);
         add("/system/error", ErrorController.class);
+        add("/android/log", LogUploadController.class);
     }
 }
