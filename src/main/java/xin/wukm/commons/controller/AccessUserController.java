@@ -31,11 +31,13 @@ import xin.wukm.commons.util.HttpUtil;
 @Before(Restful.class)
 public class AccessUserController extends ApiBaseController {
 
+    private String host = "tools-earth.1d35.starter-us-east-1.openshiftapps.com";
+
     public void index(){
         int page = getParaToInt("page",1);
 
         HttpUrl.Builder builder = new HttpUrl.Builder();
-        builder.scheme("http").host("idea.dami.ml").
+        builder.scheme("http").host(host).
                 addPathSegment("api").addPathSegment("key.action").addQueryParameter("page",String.valueOf(page));
         logger.info("url:" + builder.build().toString());
         String body = HttpUtil.get(builder.build());
